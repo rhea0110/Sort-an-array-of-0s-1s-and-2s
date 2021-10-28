@@ -1,0 +1,49 @@
+// Given an array containing only 0s, 1s and 2s. Sort the array in O(n) time i.e. process the array only once to do this sorting.
+
+import java.util.Scanner;
+
+class Result
+{
+  static void sorting012Array(int a[], int n)
+  {
+    int i=0, j=0, k=n-1;
+    while (j <= k)
+    {
+      if (a[j] == 0)
+      {
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+        i++;
+        j++;
+      }
+      else if (a[j] == 1)
+      {
+        j++;
+      }
+      else if (a[j] == 2)
+      {
+        int temp = a[k];
+        a[k] = a[j];
+        a[j] = temp;
+        k--;
+      }
+    }
+  }
+}
+
+class Main
+{
+  public static void main(String[] args)
+  {
+    int a[]=new int[50];
+    int i,n;
+    Scanner s=new Scanner(System.in);
+    n = Integer.parseInt(s.nextLine().trim());
+    for(i=0;i<n;i++)
+      a[i] = s.nextInt();
+    Result.sorting012Array(a,n);
+    for(i=0;i<n;i++)
+      System.out.print(a[i] + " ");
+  }
+}
